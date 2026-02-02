@@ -1,6 +1,8 @@
 import { login, signup } from './actions';
 
-export default function LoginPage() {
+export default async function LoginPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
+	const params = await searchParams;
+
 	return (
 		<div className="flex min-h-screen items-center justify-center bg-background px-4">
 			<div className="w-full max-w-sm space-y-8 rounded-xl border bg-card p-8 shadow-lg">
@@ -8,6 +10,8 @@ export default function LoginPage() {
 					<h1 className="text-3xl font-bold tracking-tight">Bienvenido</h1>
 					<p className="text-muted-foreground">Ingresa a tu Life Tracker</p>
 				</div>
+
+				{params.error && <div className="rounded-md bg-destructive/15 p-3 text-sm text-destructive text-center font-medium">{params.error}</div>}
 
 				<form className="space-y-6">
 					<div className="space-y-2">

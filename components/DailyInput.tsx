@@ -319,9 +319,9 @@ export function DailyInput({ data, dateKey, onUpdate, onGainXP }: DailyInputProp
 				</div>
 
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-					{habits.map((habit) => (
+					{habits.map((habit, index) => (
 						<motion.button
-							key={habit.id || habit.name}
+							key={habit.id || `habit-${index}-${habit.name}`}
 							whileTap={{ scale: 0.98 }}
 							onClick={() => handleHabitToggle(habit)}
 							className={cn(
