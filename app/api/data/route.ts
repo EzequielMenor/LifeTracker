@@ -65,30 +65,31 @@ export async function POST(request: Request) {
 
 		const newData = await request.json();
 
-		console.log('💾 Saving data for user:', user.id);
+		console.log('💾 Intentando guardar datos para usuario:', user.id);
 
-		// Upsert que busca coincidencias por user_id
-		// Asegúrate de que tu tabla tenga una constraint unique en user_id
-		// Si no la tiene, el upsert podría fallar o duplicar.
-		// Para simplificar, primero intentamos updatear, si no insertamos.
-
-		const { error } = await supabase.from('app_data').upsert(
-			{
-				user_id: user.id,
-				data: newData,
-				updated_at: new Date().toISOString(),
-			},
-			{ onConflict: 'user_id' },
-		); // IMPORTANTE: Requiere que user_id sea unique en la DB
+		// Usamos upsert basado en user_id.
+		// Si falla, es que falta el constraint UNIQUE en la base de datos.
+		const { error } = await supabase
+			.from('app_data')
+			.upsert(
+				{
+					user_id: user.id,
+					data: newData,
+					updated_at: new Date().toISOString(),
+				},
+				{ onConflict: 'user_id' },
+			)
+			.select();
 
 		if (error) {
-			console.error('Supabase Save Error:', error);
-			throw error;
+			console.error('❌ Error de Supabase al guardar:', error.message, error.details);
+			return NextResponse.json({ error: error.message, success: false }, { status: 500 });
 		}
 
+		console.log('✅ Datos guardados correctamente en la nube.');
 		return NextResponse.json({ success: true });
-	} catch (error) {
-		console.error('Save error:', error);
-		return NextResponse.json({ error: 'Failed to save data' }, { status: 500 });
+	} catch (error: any) {
+		console.error('❌ Fallo catastrófico en la API:', error.message);
+		return NextResponse.json({ error: 'Internal Server Error', success: false }, { status: 500 });
 	}
 }
