@@ -1,0 +1,57 @@
+{
+  "config": {
+    "habits": [
+      "Madrugar",
+      "Leer Biblia",
+      "Meditar",
+      "Organizar",
+      "NO",
+      "Deporte"
+    ],
+    "metrics": [
+      "Horas de Sueño",
+      "Horas de Móvil"
+    ],
+    "goals": {
+      "sleep": 6.5,
+      "phone": 3
+    }
+  },
+  "entries": {
+    "2026-01-28": {
+      "habits": {
+        "Madrugar": false,
+        "Leer Biblia": false,
+        "Meditar": false,
+        "Organizar": false,
+        "NO": false
+      },
+      "metrics": {
+        "Horas de Sueño": 7.19,
+        "Horas de Móvil": 0
+      },
+      "review": {
+        "win": "",
+        "fail": "",
+        "fix": ""
+      }
+    },
+    "2026-01-27": {
+      "habits": {},
+      "metrics": {
+        "Horas de Móvil": 7.19,
+        "Horas de Sueño": 8.43
+      },
+      "review": {
+        "win": "Terminar actividad PSP",
+        "fail": "Caer",
+        "fix": ""
+      }
+    }
+  },
+  "achievements": {
+    "first_step": "2026-01-28T09:19:35.538Z",
+    "monk_mode": "2026-01-28T09:19:35.542Z",
+    "no_fail": "2026-01-28T09:35:36.274Z"
+  }
+}
