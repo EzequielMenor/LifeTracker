@@ -1,4 +1,4 @@
-# Documentación Técnica: ReflectForward (Life OS)
+# Documentación Técnica: Life Tracker (Life OS)
 
 **Versión:** 1.0.0  
 **Fecha de Actualización:** 28 de Enero de 2026  
@@ -7,7 +7,7 @@
 ---
 
 ## 1. Visión General
-**ReflectForward** es un "Sistema Operativo Personal" (Life OS) diseñado para centralizar la gestión de la vida diaria en una única interfaz cohesiva. A diferencia de usar apps separadas para tareas, calendario y diario, este sistema unifica estos contextos para ofrecer métricas de productividad correlacionadas.
+**Life Tracker** es un "Sistema Operativo Personal" (Life OS) diseñado para centralizar la gestión de la vida diaria en una única interfaz cohesiva. A diferencia de usar apps separadas para tareas, calendario y diario, este sistema unifica estos contextos para ofrecer métricas de productividad correlacionadas.
 
 ### Propósito
 - **Unificación:** Eliminar la fricción entre el "hacer" (Tareas), el "planificar" (Calendario) y el "reflexionar" (Diario).
