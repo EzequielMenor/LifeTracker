@@ -1,4 +1,4 @@
-import { supabase } from '@/lib/supabase';
+import { createClient } from '@/utils/supabase/server';
 import { NextResponse } from 'next/server';
 
 const INITIAL_DATA = {
@@ -22,11 +22,26 @@ const INITIAL_DATA = {
 
 export async function GET() {
 	try {
-		const { data, error } = await supabase.from('app_data').select('data').eq('id', 1).single();
+		const supabase = await createClient(); // Cliente de servidor seguro
+
+		const {
+			data: { user },
+		} = await supabase.auth.getUser();
+
+		if (!user) {
+			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+		}
+
+		console.log('📥 Fetching data for user:', user.id);
+
+		const { data, error } = await supabase
+			.from('app_data')
+			.select('data')
+			.eq('user_id', user.id) // Busca por UID, no por ID 1
+			.single();
 
 		if (error) {
-			console.error('Supabase error:', error);
-			// Si no hay datos, devolvemos el inicial
+			console.warn('No data found for user, returning initial state:', error.message);
 			return NextResponse.json(INITIAL_DATA);
 		}
 
@@ -39,15 +54,37 @@ export async function GET() {
 
 export async function POST(request: Request) {
 	try {
+		const supabase = await createClient();
+		const {
+			data: { user },
+		} = await supabase.auth.getUser();
+
+		if (!user) {
+			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+		}
+
 		const newData = await request.json();
 
-		const { error } = await supabase.from('app_data').upsert({
-			id: 1,
-			data: newData,
-			updated_at: new Date().toISOString(),
-		});
+		console.log('💾 Saving data for user:', user.id);
 
-		if (error) throw error;
+		// Upsert que busca coincidencias por user_id
+		// Asegúrate de que tu tabla tenga una constraint unique en user_id
+		// Si no la tiene, el upsert podría fallar o duplicar.
+		// Para simplificar, primero intentamos updatear, si no insertamos.
+
+		const { error } = await supabase.from('app_data').upsert(
+			{
+				user_id: user.id,
+				data: newData,
+				updated_at: new Date().toISOString(),
+			},
+			{ onConflict: 'user_id' },
+		); // IMPORTANTE: Requiere que user_id sea unique en la DB
+
+		if (error) {
+			console.error('Supabase Save Error:', error);
+			throw error;
+		}
 
 		return NextResponse.json({ success: true });
 	} catch (error) {
