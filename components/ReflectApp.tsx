@@ -78,14 +78,21 @@ export function ReflectApp() {
 
 			setData({ ...finalData });
 			try {
-				await fetch('/api/data', {
+				const res = await fetch('/api/data', {
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify(finalData),
 				});
-			} catch (e) {
+
+				if (!res.ok) {
+					const errorData = await res.json();
+					throw new Error(errorData.error || 'Fallo al guardar');
+				}
+
+				console.log('✅ Guardado con éxito');
+			} catch (e: any) {
 				console.error('Error saving:', e);
-				toast.error('Error guardando');
+				toast.error('❌ ERROR CRÍTICO: No se pudo guardar en la nube. Revisa tu conexión o el SQL.');
 			}
 		},
 		[checkAchievements],
