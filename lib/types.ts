@@ -17,6 +17,7 @@ export interface UserProfile {
 		xpGained: number;
 		attribute?: keyof AttributeStats;
 	}>;
+	inventory: string[];
 }
 
 export type AttributeKey = 'STR' | 'INT' | 'WIL' | 'CRE';
@@ -37,6 +38,7 @@ export interface Config {
 		phone?: number;
 		[key: string]: number | undefined;
 	};
+	activeTheme?: string;
 }
 
 export interface Task {

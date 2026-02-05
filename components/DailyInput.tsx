@@ -333,7 +333,9 @@ export function DailyInput({ data, dateKey, onUpdate, onGainXP }: DailyInputProp
 							<div className="flex items-center gap-3 z-10 relative">
 								<div
 									className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold border ${
-										entry.habits[habit.name] ? 'bg-white/20 border-white/20 text-white' : 'bg-muted border-border text-muted-foreground'
+										entry.habits[habit.name]
+											? 'bg-primary-foreground/20 border-primary-foreground/20 text-primary-foreground'
+											: 'bg-muted border-border text-muted-foreground'
 									}`}>
 									{habit.attribute || 'XP'}
 								</div>

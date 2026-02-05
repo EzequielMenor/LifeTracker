@@ -1,11 +1,13 @@
 'use client';
 
-import { AlertTriangle, Brain, Dumbbell, Flame, Lightbulb, LogOut, Plus, Save, Trash2, X } from 'lucide-react';
+import { AlertTriangle, Brain, Dumbbell, Flame, Lightbulb, LogOut, Palette, Plus, Save, Trash2, X } from 'lucide-react';
 import { signOut } from '@/app/login/actions';
 import * as React from 'react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
 import { useGameSystem } from '@/hooks/useGameSystem';
 import type { AttributeKey, DB } from '@/lib/types';
 

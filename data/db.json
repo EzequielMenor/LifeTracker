@@ -1,256 +1,256 @@
 {
-  "user": {
-    "xp": 0,
-    "level": 1,
-    "gold": 0,
-    "attributes": {
-      "STR": 0,
-      "INT": 0,
-      "WIL": 0,
-      "CRE": 0
-    },
-    "history": [
-      {
-        "id": "c8a1302b-efca-4bc2-b448-587c5ede14d9",
-        "date": "2026-01-30T15:54:42.722Z",
-        "action": "Hábito cancelado: No",
-        "xpGained": -20,
-        "attribute": "WIL"
-      },
-      {
-        "id": "21fa8069-b615-4b04-a4e4-7162daed1436",
-        "date": "2026-01-30T15:54:42.456Z",
-        "action": "Hábito cancelado: Madrugar",
-        "xpGained": -20,
-        "attribute": "WIL"
-      },
-      {
-        "id": "fa3d65f6-d590-4b90-ac84-39cff51fd837",
-        "date": "2026-01-30T15:54:41.806Z",
-        "action": "Hábito: No",
-        "xpGained": 20,
-        "attribute": "WIL"
-      },
-      {
-        "id": "cc7fb0ae-6e60-47e8-a723-cbdf2744a637",
-        "date": "2026-01-30T15:54:40.844Z",
-        "action": "Hábito: Madrugar",
-        "xpGained": 20,
-        "attribute": "WIL"
-      },
-      {
-        "id": "9eae6123-d270-43ce-a422-e3205e71ace4",
-        "date": "2026-01-30T15:54:40.296Z",
-        "action": "Hábito cancelado: No",
-        "xpGained": -20,
-        "attribute": "WIL"
-      },
-      {
-        "id": "a68343ac-fb8b-4131-b6d7-84055de3096c",
-        "date": "2026-01-30T15:54:39.555Z",
-        "action": "Hábito cancelado: Madrugar",
-        "xpGained": -20,
-        "attribute": "WIL"
-      },
-      {
-        "id": "39794a05-2f19-4145-89c3-b46be4bede88",
-        "date": "2026-01-30T15:54:36.421Z",
-        "action": "Hábito cancelado: No",
-        "xpGained": -20,
-        "attribute": "WIL"
-      },
-      {
-        "id": "acaeeeff-d132-48b4-bd26-53de8086adcd",
-        "date": "2026-01-30T15:54:36.141Z",
-        "action": "Hábito cancelado: Leer",
-        "xpGained": -20,
-        "attribute": "INT"
-      },
-      {
-        "id": "a7c70266-d375-4dca-9943-451b59fc673e",
-        "date": "2026-01-30T15:54:35.510Z",
-        "action": "Hábito: No",
-        "xpGained": 20,
-        "attribute": "WIL"
-      },
-      {
-        "id": "1c1e0b8b-78ed-41d0-ad77-5fcfcf69cc7c",
-        "date": "2026-01-30T15:54:35.157Z",
-        "action": "Hábito: Leer",
-        "xpGained": 20,
-        "attribute": "INT"
-      },
-      {
-        "id": "5aac5f4a-ac90-4cd9-a360-f88f562562cf",
-        "date": "2026-01-30T15:54:33.790Z",
-        "action": "Hábito cancelado: Madrugar",
-        "xpGained": -20,
-        "attribute": "WIL"
-      },
-      {
-        "id": "a859f35a-9868-4420-be63-13dde88545df",
-        "date": "2026-01-30T15:54:32.199Z",
-        "action": "Hábito: Madrugar",
-        "xpGained": 20,
-        "attribute": "WIL"
-      },
-      {
-        "id": "bc0c6f22-2242-4a87-996c-ad16ca1a07ef",
-        "date": "2026-01-28T19:38:22.969Z",
-        "action": "Hábito: No",
-        "xpGained": 20,
-        "attribute": "WIL"
-      },
-      {
-        "id": "becab9e9-6529-43c1-97c3-af1880f7303e",
-        "date": "2026-01-28T19:38:22.081Z",
-        "action": "Hábito: Madrugar",
-        "xpGained": 20,
-        "attribute": "WIL"
-      },
-      {
-        "id": "2035dc24-a1eb-4ccf-81dd-3691c2a7b002",
-        "date": "2026-01-28T19:38:16.589Z",
-        "action": "Hábito cancelado: Escribir",
-        "xpGained": -20,
-        "attribute": "CRE"
-      },
-      {
-        "id": "465cca55-a63f-4091-908d-a0beff4b2920",
-        "date": "2026-01-28T19:38:16.305Z",
-        "action": "Hábito: Escribir",
-        "xpGained": 20,
-        "attribute": "CRE"
-      },
-      {
-        "id": "748b63bf-c144-4875-a6f4-325998fcb1c5",
-        "date": "2026-01-28T19:38:15.838Z",
-        "action": "Hábito cancelado: Madrugar",
-        "xpGained": -20,
-        "attribute": "WIL"
-      },
-      {
-        "id": "85a952b5-ce2e-4aba-a30b-4fdcc0340b06",
-        "date": "2026-01-28T19:38:15.088Z",
-        "action": "Hábito: Madrugar",
-        "xpGained": 20,
-        "attribute": "WIL"
-      },
-      {
-        "id": "b9c73333-6e7e-424f-a5eb-e63b516667f1",
-        "date": "2026-01-28T17:45:35.027Z",
-        "action": "Hábito cancelado: Escribir",
-        "xpGained": -20,
-        "attribute": "CRE"
-      },
-      {
-        "id": "3de0f99a-89c4-4dc7-b904-193dd7556e5b",
-        "date": "2026-01-28T17:45:34.788Z",
-        "action": "Hábito cancelado: Madrugar",
-        "xpGained": -20,
-        "attribute": "WIL"
-      },
-      {
-        "id": "df33f0bc-a0e2-4928-a5f7-cd7fe1ba6451",
-        "date": "2026-01-28T17:45:34.421Z",
-        "action": "Hábito: Escribir",
-        "xpGained": 20,
-        "attribute": "CRE"
-      },
-      {
-        "id": "e1d499b6-f624-45fe-878f-2a816321dde6",
-        "date": "2026-01-28T17:45:33.253Z",
-        "action": "Hábito: Madrugar",
-        "xpGained": 20,
-        "attribute": "WIL"
-      }
-    ]
-  },
-  "config": {
-    "habits": [
-      {
-        "id": "8faf6091-b3c9-43aa-8787-dd52c7b93245",
-        "name": "Madrugar",
-        "attribute": "WIL"
-      },
-      {
-        "id": "465c43e9-7b18-4282-b11e-1b4857b11343",
-        "name": "Leer",
-        "attribute": "INT"
-      },
-      {
-        "id": "dce561e7-d844-49a9-a740-31077d526b44",
-        "name": "Escribir",
-        "attribute": "CRE"
-      },
-      {
-        "id": "f17ca2e0-cd6f-46c8-b38d-f1aa516bda2a",
-        "name": "No",
-        "attribute": "WIL"
-      },
-      {
-        "id": "fde66a21-523f-4af1-b773-efa366217ffd",
-        "name": "Deporte",
-        "attribute": "STR"
-      }
-    ],
-    "goals": {
-      "sleep": 6.5,
-      "phone": 3
-    }
-  },
-  "entries": {
-    "2026-01-28": {
-      "habits": {
-        "Madrugar": false,
-        "No": false,
-        "Escribir": false,
-        "Leer": false
-      },
-      "metrics": {
-        "Horas de Sueño": 7.2,
-        "Horas de Móvil": 0
-      },
-      "tasks": {},
-      "review": {
-        "win": "Hacer esta app",
-        "fail": "Seguir viendo videos youtube",
-        "fix": ""
-      },
-      "completed": false
-    },
-    "2026-01-30": {
-      "habits": {
-        "Madrugar": false,
-        "Leer": false,
-        "No": false
-      },
-      "metrics": {},
-      "tasks": {},
-      "review": {
-        "win": "",
-        "fail": "",
-        "fix": ""
-      },
-      "completed": false
-    },
-    "inbox": {
-      "habits": {},
-      "metrics": {},
-      "tasks": {
-        "04ebdc43-848f-461d-ab77-458d27dd9237": {
-          "name": "Prueba inbox",
-          "completed": false,
-          "createdAt": "2026-01-30T16:38:19.105Z"
-        }
-      },
-      "review": {}
-    }
-  },
-  "achievements": {
-    "first_step": "2026-01-28T16:17:48.997Z"
-  },
-  "events": [],
-  "notes": [],
-  "quests": []
+	"user": {
+		"xp": 0,
+		"level": 1,
+		"gold": 1000,
+		"attributes": {
+			"STR": 0,
+			"INT": 0,
+			"WIL": 0,
+			"CRE": 0
+		},
+		"history": [
+			{
+				"id": "c8a1302b-efca-4bc2-b448-587c5ede14d9",
+				"date": "2026-01-30T15:54:42.722Z",
+				"action": "Hábito cancelado: No",
+				"xpGained": -20,
+				"attribute": "WIL"
+			},
+			{
+				"id": "21fa8069-b615-4b04-a4e4-7162daed1436",
+				"date": "2026-01-30T15:54:42.456Z",
+				"action": "Hábito cancelado: Madrugar",
+				"xpGained": -20,
+				"attribute": "WIL"
+			},
+			{
+				"id": "fa3d65f6-d590-4b90-ac84-39cff51fd837",
+				"date": "2026-01-30T15:54:41.806Z",
+				"action": "Hábito: No",
+				"xpGained": 20,
+				"attribute": "WIL"
+			},
+			{
+				"id": "cc7fb0ae-6e60-47e8-a723-cbdf2744a637",
+				"date": "2026-01-30T15:54:40.844Z",
+				"action": "Hábito: Madrugar",
+				"xpGained": 20,
+				"attribute": "WIL"
+			},
+			{
+				"id": "9eae6123-d270-43ce-a422-e3205e71ace4",
+				"date": "2026-01-30T15:54:40.296Z",
+				"action": "Hábito cancelado: No",
+				"xpGained": -20,
+				"attribute": "WIL"
+			},
+			{
+				"id": "a68343ac-fb8b-4131-b6d7-84055de3096c",
+				"date": "2026-01-30T15:54:39.555Z",
+				"action": "Hábito cancelado: Madrugar",
+				"xpGained": -20,
+				"attribute": "WIL"
+			},
+			{
+				"id": "39794a05-2f19-4145-89c3-b46be4bede88",
+				"date": "2026-01-30T15:54:36.421Z",
+				"action": "Hábito cancelado: No",
+				"xpGained": -20,
+				"attribute": "WIL"
+			},
+			{
+				"id": "acaeeeff-d132-48b4-bd26-53de8086adcd",
+				"date": "2026-01-30T15:54:36.141Z",
+				"action": "Hábito cancelado: Leer",
+				"xpGained": -20,
+				"attribute": "INT"
+			},
+			{
+				"id": "a7c70266-d375-4dca-9943-451b59fc673e",
+				"date": "2026-01-30T15:54:35.510Z",
+				"action": "Hábito: No",
+				"xpGained": 20,
+				"attribute": "WIL"
+			},
+			{
+				"id": "1c1e0b8b-78ed-41d0-ad77-5fcfcf69cc7c",
+				"date": "2026-01-30T15:54:35.157Z",
+				"action": "Hábito: Leer",
+				"xpGained": 20,
+				"attribute": "INT"
+			},
+			{
+				"id": "5aac5f4a-ac90-4cd9-a360-f88f562562cf",
+				"date": "2026-01-30T15:54:33.790Z",
+				"action": "Hábito cancelado: Madrugar",
+				"xpGained": -20,
+				"attribute": "WIL"
+			},
+			{
+				"id": "a859f35a-9868-4420-be63-13dde88545df",
+				"date": "2026-01-30T15:54:32.199Z",
+				"action": "Hábito: Madrugar",
+				"xpGained": 20,
+				"attribute": "WIL"
+			},
+			{
+				"id": "bc0c6f22-2242-4a87-996c-ad16ca1a07ef",
+				"date": "2026-01-28T19:38:22.969Z",
+				"action": "Hábito: No",
+				"xpGained": 20,
+				"attribute": "WIL"
+			},
+			{
+				"id": "becab9e9-6529-43c1-97c3-af1880f7303e",
+				"date": "2026-01-28T19:38:22.081Z",
+				"action": "Hábito: Madrugar",
+				"xpGained": 20,
+				"attribute": "WIL"
+			},
+			{
+				"id": "2035dc24-a1eb-4ccf-81dd-3691c2a7b002",
+				"date": "2026-01-28T19:38:16.589Z",
+				"action": "Hábito cancelado: Escribir",
+				"xpGained": -20,
+				"attribute": "CRE"
+			},
+			{
+				"id": "465cca55-a63f-4091-908d-a0beff4b2920",
+				"date": "2026-01-28T19:38:16.305Z",
+				"action": "Hábito: Escribir",
+				"xpGained": 20,
+				"attribute": "CRE"
+			},
+			{
+				"id": "748b63bf-c144-4875-a6f4-325998fcb1c5",
+				"date": "2026-01-28T19:38:15.838Z",
+				"action": "Hábito cancelado: Madrugar",
+				"xpGained": -20,
+				"attribute": "WIL"
+			},
+			{
+				"id": "85a952b5-ce2e-4aba-a30b-4fdcc0340b06",
+				"date": "2026-01-28T19:38:15.088Z",
+				"action": "Hábito: Madrugar",
+				"xpGained": 20,
+				"attribute": "WIL"
+			},
+			{
+				"id": "b9c73333-6e7e-424f-a5eb-e63b516667f1",
+				"date": "2026-01-28T17:45:35.027Z",
+				"action": "Hábito cancelado: Escribir",
+				"xpGained": -20,
+				"attribute": "CRE"
+			},
+			{
+				"id": "3de0f99a-89c4-4dc7-b904-193dd7556e5b",
+				"date": "2026-01-28T17:45:34.788Z",
+				"action": "Hábito cancelado: Madrugar",
+				"xpGained": -20,
+				"attribute": "WIL"
+			},
+			{
+				"id": "df33f0bc-a0e2-4928-a5f7-cd7fe1ba6451",
+				"date": "2026-01-28T17:45:34.421Z",
+				"action": "Hábito: Escribir",
+				"xpGained": 20,
+				"attribute": "CRE"
+			},
+			{
+				"id": "e1d499b6-f624-45fe-878f-2a816321dde6",
+				"date": "2026-01-28T17:45:33.253Z",
+				"action": "Hábito: Madrugar",
+				"xpGained": 20,
+				"attribute": "WIL"
+			}
+		]
+	},
+	"config": {
+		"habits": [
+			{
+				"id": "8faf6091-b3c9-43aa-8787-dd52c7b93245",
+				"name": "Madrugar",
+				"attribute": "WIL"
+			},
+			{
+				"id": "465c43e9-7b18-4282-b11e-1b4857b11343",
+				"name": "Leer",
+				"attribute": "INT"
+			},
+			{
+				"id": "dce561e7-d844-49a9-a740-31077d526b44",
+				"name": "Escribir",
+				"attribute": "CRE"
+			},
+			{
+				"id": "f17ca2e0-cd6f-46c8-b38d-f1aa516bda2a",
+				"name": "No",
+				"attribute": "WIL"
+			},
+			{
+				"id": "fde66a21-523f-4af1-b773-efa366217ffd",
+				"name": "Deporte",
+				"attribute": "STR"
+			}
+		],
+		"goals": {
+			"sleep": 6.5,
+			"phone": 3
+		}
+	},
+	"entries": {
+		"2026-01-28": {
+			"habits": {
+				"Madrugar": false,
+				"No": false,
+				"Escribir": false,
+				"Leer": false
+			},
+			"metrics": {
+				"Horas de Sueño": 7.2,
+				"Horas de Móvil": 0
+			},
+			"tasks": {},
+			"review": {
+				"win": "Hacer esta app",
+				"fail": "Seguir viendo videos youtube",
+				"fix": ""
+			},
+			"completed": false
+		},
+		"2026-01-30": {
+			"habits": {
+				"Madrugar": false,
+				"Leer": false,
+				"No": false
+			},
+			"metrics": {},
+			"tasks": {},
+			"review": {
+				"win": "",
+				"fail": "",
+				"fix": ""
+			},
+			"completed": false
+		},
+		"inbox": {
+			"habits": {},
+			"metrics": {},
+			"tasks": {
+				"04ebdc43-848f-461d-ab77-458d27dd9237": {
+					"name": "Prueba inbox",
+					"completed": false,
+					"createdAt": "2026-01-30T16:38:19.105Z"
+				}
+			},
+			"review": {}
+		}
+	},
+	"achievements": {
+		"first_step": "2026-01-28T16:17:48.997Z"
+	},
+	"events": [],
+	"notes": [],
+	"quests": []
 }

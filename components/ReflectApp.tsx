@@ -3,7 +3,8 @@
 import confetti from 'canvas-confetti';
 import { addDays, format, isSameDay, subDays } from 'date-fns';
 import { es } from 'date-fns/locale';
-import { Award, BarChart, Brain, Calendar, CheckSquare, ChevronLeft, ChevronRight, Coins, Scroll, Settings, ShoppingBag, Trophy } from 'lucide-react';
+import { Award, BarChart, Brain, Calendar, CheckSquare, ChevronLeft, ChevronRight, Coins, Scroll, Settings } from 'lucide-react';
+import { useTheme } from 'next-themes';
 import * as React from 'react';
 import { toast } from 'sonner';
 import { AchievementsView } from '@/components/AchievementsView';
@@ -23,6 +24,7 @@ import { ACHIEVEMENTS } from '@/lib/achievements';
 import type { DB } from '@/lib/types';
 
 export function ReflectApp() {
+	const { theme } = useTheme();
 	const [data, setData] = React.useState<DB | null>(null);
 	const [loading, setLoading] = React.useState(true);
 	const [activeTab, setActiveTab] = React.useState<'input' | 'analytics' | 'brain' | 'tasks' | 'quests' | 'finance'>('input');
@@ -234,6 +236,9 @@ export function ReflectApp() {
 		);
 	}
 
+	// --- THEME LOGIC --- (Simplified)
+	const isPremiumUser = false; // Disabled for now
+
 	return (
 		<div className="min-h-screen bg-background text-foreground transition-colors duration-500">
 			{/* --- HEADER --- */}
@@ -243,13 +248,15 @@ export function ReflectApp() {
 						<span className="font-bold tracking-tight text-xl hidden md:inline">Life Tracker</span>
 
 						{/* RPG HUD */}
+						<span
+							onClick={() => setShowShop(true)}
+							className="text-yellow-500 flex items-center gap-2 bg-yellow-500/10 px-3 py-1 rounded-full border border-yellow-500/20 font-bold text-sm shadow-[0_0_10px_rgba(234,179,8,0.2)] cursor-pointer hover:bg-yellow-500/20 transition-all">
+							<Coins size={16} /> {gold}
+						</span>
 						<div className="flex flex-col min-w-[140px] gap-1 mr-4 cursor-help group relative">
 							<div className="flex justify-between items-center text-[10px] font-bold uppercase text-muted-foreground tracking-wider">
 								<div className="flex items-center gap-2">
 									<span className="text-foreground">Lvl {currentLevel}</span>
-									<span className="text-yellow-500 flex items-center gap-1 bg-yellow-500/10 px-1.5 rounded-full">
-										<Coins size={10} /> {gold}
-									</span>
 								</div>
 								<span>{Math.round(levelProgress)}%</span>
 							</div>
@@ -272,20 +279,13 @@ export function ReflectApp() {
 					</div>
 
 					<div className="flex items-center gap-2">
-						<Button
-							variant="ghost"
-							size="icon"
-							onClick={() => setShowShop(true)}
-							className="text-yellow-500 hover:text-yellow-600 hover:bg-yellow-500/10">
-							<ShoppingBag className="h-5 w-5" />
-						</Button>
-
 						<Button variant="ghost" size="icon" onClick={() => setShowAchievements(true)}>
 							<Award className="h-5 w-5 text-yellow-500" />
 						</Button>
 						<Button variant="ghost" size="icon" onClick={() => setShowSettings(true)}>
 							<Settings className="h-5 w-5" />
 						</Button>
+
 						<ModeToggle />
 					</div>
 				</div>
