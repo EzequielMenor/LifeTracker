@@ -92,7 +92,7 @@ export function ReflectApp() {
 	);
 
 	// --- GAME SYSTEM ---
-	const { levelProgress, currentLevel, gainXP, gold: userGold } = useGameSystem(data, handleUpdate);
+	const { levelProgress, currentLevel, gainXP, gold: userGold } = useGameSystem(data || null, handleUpdate);
 	const handleNotesUpdate = (newNotes: Note[]) => {
 		if (!data) return;
 		const newData = { ...data, notes: newNotes };

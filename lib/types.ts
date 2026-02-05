@@ -102,3 +102,12 @@ export interface DB {
 	notes?: any[];
 	quests?: Quest[];
 }
+
+export interface Note {
+	id: string;
+	title: string;
+	content: string;
+	tags: string[];
+	updatedAt: string;
+	createdAt: string;
+}
