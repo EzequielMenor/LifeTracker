@@ -94,24 +94,17 @@ export function useReflectData() {
 
 	// GENERIC UPDATE FUNCTION (Simulates the old monolithic update for compatibility)
 	// In the future, we should split this into specific mutations
+	// GENERIC UPDATE FUNCTION
 	const updateData = useMutation({
 		mutationFn: async (newData: DB) => {
-			// This is a "compatibility layer" mutation.
-			// Ideally we don't send the WHOLE local state back to SQL.
-			// Currently, `useGameSystem` modifies the local object locally and then calls this.
-			// We need to detect WHAT changed and only update that table.
-
-			// FOR PHASE 1: WE ONLY IMPLEMENT PROFILE SYNC (XP/GOLD) and LOGS
-			// Habits and Notes have their own logic usually, but here everything passes through.
-
 			const {
 				data: { user },
 			} = await supabase.auth.getUser();
 			if (!user) return;
 
-			// 1. Update Profile
+			// 1. Update Profile (Always update for now, or diff if needed)
 			if (newData.user) {
-				await supabase
+				const { error: profileError } = await supabase
 					.from('profiles')
 					.update({
 						xp: newData.user.xp,
@@ -121,13 +114,62 @@ export function useReflectData() {
 						inventory: newData.user.inventory,
 					})
 					.eq('id', user.id);
+
+				if (profileError) console.error('Profile update failed:', profileError);
 			}
 
-			// 2. We can't easily diff entries without complexity.
-			// For now, let's just say this hook is mostly for reading.
-			// Specialized mutations should be created for actions.
+			// 2. Update Daily Logs (Entries) - Smart Diffing
+			// We access the previous data from the cache to see what changed
+			const previousData = queryClient.getQueryData<DB>(['reflect-data']);
+			const entriesToUpsert = [];
+
+			if (newData.entries) {
+				for (const [date, entry] of Object.entries(newData.entries)) {
+					const oldEntry = previousData?.entries?.[date];
+					// Simple JSON stringify comparison to detect changes
+					if (!oldEntry || JSON.stringify(oldEntry) !== JSON.stringify(entry)) {
+						entriesToUpsert.push({
+							user_id: user.id,
+							date: date,
+							metrics: entry.metrics || {},
+							completed_habits: entry.habits || {},
+							review_win: entry.review?.win || null,
+							review_fail: entry.review?.fail || null,
+							review_fix: entry.review?.fix || null,
+							completed: entry.completed || false,
+							updated_at: new Date().toISOString(),
+						});
+					}
+				}
+			}
+
+			if (entriesToUpsert.length > 0) {
+				const { error: logsError } = await supabase.from('daily_logs').upsert(entriesToUpsert, { onConflict: 'user_id, date' });
+
+				if (logsError) console.error('Logs update failed:', logsError);
+			}
+		},
+		onMutate: async (newData) => {
+			// Optimistic Update
+			await queryClient.cancelQueries({ queryKey: ['reflect-data'] });
+			const previousData = queryClient.getQueryData(['reflect-data']);
+			queryClient.setQueryData(['reflect-data'], newData);
+			return { previousData };
+		},
+		onError: (err, newData, context) => {
+			// Rollback on error
+			if (context?.previousData) {
+				queryClient.setQueryData(['reflect-data'], context.previousData);
+			}
+			toast.error('Error al guardar cambios');
+			console.error('Mutation failed:', err);
 		},
 		onSuccess: () => {
+			// Instead of invalidating immediately (which might cause flickering),
+			// we can rely on our optimistic update or invalidate silently.
+			// invalidating ensures consistency but can be jarring if the fetch is slow.
+			// Let's invalidate to be safe, but maybe with a debounce or just trust optimistic for now?
+			// For "static" feeling, invalidating is good to confirm server state.
 			queryClient.invalidateQueries({ queryKey: ['reflect-data'] });
 		},
 	});

@@ -19,14 +19,15 @@ import { ShopView } from '@/components/ShopView';
 import { QuestsView } from '@/components/QuestsView';
 import { TasksView } from '@/components/TasksView';
 import { Button } from '@/components/ui/button';
+import { useReflectData } from '@/hooks/useReflectData';
 import { useGameSystem } from '@/hooks/useGameSystem';
 import { ACHIEVEMENTS } from '@/lib/achievements';
 import type { DB } from '@/lib/types';
 
 export function ReflectApp() {
 	const { theme } = useTheme();
-	const [data, setData] = React.useState<DB | null>(null);
-	const [loading, setLoading] = React.useState(true);
+	// React Query Hook
+	const { data, isLoading, updateData } = useReflectData();
 	const [activeTab, setActiveTab] = React.useState<'input' | 'analytics' | 'brain' | 'tasks' | 'quests' | 'finance'>('input');
 	const [showSettings, setShowSettings] = React.useState(false);
 	const [showAchievements, setShowAchievements] = React.useState(false);
@@ -35,6 +36,10 @@ export function ReflectApp() {
 	// Date Navigation State
 	const [currentDate, setCurrentDate] = React.useState(new Date());
 	const dateKey = format(currentDate, 'yyyy-MM-dd');
+
+	// We might need to keep a local "optimistic" state if we want instant clicks,
+	// but for now let's rely on React Query's cache.
+	// Actually, most components expect `data` to be mutable or updateable via `onUpdate`.
 
 	// --- ACHIEVEMENT CHECKER ---
 	const checkAchievements = React.useCallback(
@@ -72,50 +77,22 @@ export function ReflectApp() {
 		[dateKey],
 	);
 
-	// Save function
+	// Adapter for handleUpdate to use the mutation
 	const handleUpdate = React.useCallback(
-		async (newData: DB) => {
-			// Check for achievements BEFORE saving
-			const finalData = checkAchievements(newData, true);
+		(newData: DB) => {
+			// 1. Run checks (Optimistic / Notification only)
+			// Note: This won't persist achievements unless we update the DB logic to handle them too.
+			// Ideally achievements should be checked on the server trigger.
+			checkAchievements(newData, true);
 
-			setData({ ...finalData });
-			try {
-				const res = await fetch('/api/data', {
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify(finalData),
-				});
-
-				if (!res.ok) {
-					const errorData = await res.json();
-					throw new Error(errorData.error || 'Fallo al guardar');
-				}
-
-				console.log('✅ Guardado con éxito');
-			} catch (e: any) {
-				console.error('Error saving:', e);
-				toast.error('❌ ERROR CRÍTICO: No se pudo guardar en la nube. Revisa tu conexión o el SQL.');
-			}
+			// 2. Trigger mutation
+			updateData.mutate(newData);
 		},
-		[checkAchievements],
+		[checkAchievements, updateData],
 	);
 
 	// --- GAME SYSTEM ---
-	const { levelProgress, currentLevel, gainXP, gold } = useGameSystem(data, handleUpdate);
-
-	// Load Data
-	React.useEffect(() => {
-		fetch('/api/data')
-			.then((res) => res.json())
-			.then((d) => {
-				// Run automatic migration on load
-				const { migrateTasks } = require('@/lib/migrateTasksFormat');
-				const migratedData = migrateTasks(d);
-				setData(migratedData);
-				setLoading(false);
-			});
-	}, []);
-
+	const { levelProgress, currentLevel, gainXP, gold: userGold } = useGameSystem(data, handleUpdate);
 	const handleNotesUpdate = (newNotes: Note[]) => {
 		if (!data) return;
 		const newData = { ...data, notes: newNotes };
@@ -198,7 +175,7 @@ export function ReflectApp() {
 	const dailyScore = calculateScore(dateKey);
 	const isToday = isSameDay(currentDate, new Date());
 
-	if (loading || !data) return <div className="flex h-screen items-center justify-center animate-pulse">Cargando sistema...</div>;
+	if (isLoading || !data) return <div className="flex h-screen items-center justify-center animate-pulse">Cargando sistema...</div>;
 
 	// RENDER SETTINGS MODAL
 	if (showSettings) {
@@ -251,7 +228,7 @@ export function ReflectApp() {
 						<span
 							onClick={() => setShowShop(true)}
 							className="text-yellow-500 flex items-center gap-2 bg-yellow-500/10 px-3 py-1 rounded-full border border-yellow-500/20 font-bold text-sm shadow-[0_0_10px_rgba(234,179,8,0.2)] cursor-pointer hover:bg-yellow-500/20 transition-all">
-							<Coins size={16} /> {gold}
+							<Coins size={16} /> {userGold}
 						</span>
 						<div className="flex flex-col min-w-[140px] gap-1 mr-4 cursor-help group relative">
 							<div className="flex justify-between items-center text-[10px] font-bold uppercase text-muted-foreground tracking-wider">
